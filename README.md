@@ -1,102 +1,92 @@
-# Simple Notification Service on AWS 🚀
+# AWS File Upload Service 🚀
 
-A cloud-based notification service fully designed and deployed on Amazon Web Services (AWS).  
-This project focuses on AWS infrastructure, security, and service integration rather than application frameworks.
+A simple cloud-based file upload application built using Python (Flask) and deployed on Amazon Web Services (AWS).  
+This project allows users to upload files through a web interface and securely store them in an Amazon S3 bucket.
 
 ---
 
 ## 🌐 Project Overview
+- **Backend:** Python (Flask)
 - **Cloud Provider:** Amazon Web Services (AWS)
-- **Deployment Type:** Infrastructure-based deployment
-- **Status:** Successfully deployed and tested
-
-This project demonstrates how to build a secure and scalable notification system using core AWS services.
-
----
-
-## 📌 Key Features
-- Custom VPC and subnet configuration
-- Secure EC2 instance with IAM role-based access
-- Notification delivery using AWS SNS
-- Network security using Security Groups
-- Monitoring and logging using CloudWatch
-- No hardcoded credentials (IAM best practices)
+- **Compute:** Amazon EC2
+- **Storage:** Amazon S3
+- **Status:** Deployed and working
 
 ---
 
-## 🏗 Architecture Components
-- **VPC:** Isolated virtual network
-- **Subnet:** Logical segmentation of the VPC
-- **Route Table & Internet Gateway:** Internet connectivity
-- **Security Group:** Acts as a virtual firewall
-- **IAM Role & Policies:** Secure access to AWS services
-- **EC2 Instance:** Hosts the notification service
-- **AWS SNS:** Publishes and delivers notifications
-- **CloudWatch:** Logs and monitoring
+## 📌 Features
+- Web-based file upload using Flask
+- Secure file storage in Amazon S3
+- IAM role-based access (no hardcoded AWS keys)
+- Deployed on AWS EC2
+- Secure file handling using `secure_filename`
 
 ---
 
-## 🛠 AWS Services Used
-- Amazon VPC
-- Subnets (CIDR-based)
-- Internet Gateway
-- Route Tables
-- Security Groups
-- IAM (Roles & Policies)
-- Amazon EC2
-- Amazon SNS
-- Amazon CloudWatch
+## 🏗 Architecture
+- **EC2 Instance:** Hosts the Flask application
+- **IAM Role:** Grants EC2 permission to access S3
+- **S3 Bucket:** Stores uploaded files
+- **Security Group:** Controls network access to EC2
 
 ---
 
-## 🔁 Notification Flow
-1. Infrastructure is created inside a custom VPC
-2. EC2 instance is launched within a subnet
-3. IAM role is attached to EC2 for secure permissions
-4. EC2 publishes messages to an SNS topic
-5. SNS delivers notifications to subscribed endpoints
-6. Logs and metrics are monitored via CloudWatch
+## 🛠 Tech Stack
+- Python
+- Flask
+- AWS EC2
+- AWS S3
+- AWS IAM
+- AWS Security Groups
+
+---
+
+## 📂 Project Structure
+aws-file-upload-service/ │ ├── app.py ├── requirements.txt ├── README.md └── .gitignore---
+
+## 🔁 Application Flow
+1. User opens the web page
+2. Selects a file to upload
+3. Flask receives the file request
+4. File is uploaded to Amazon S3 using boto3
+5. Success message is returned to the user
 
 ---
 
 ## 🚀 Deployment Steps (High-Level)
-1. Created a custom VPC
-2. Configured subnet with CIDR validation
-3. Set up route tables and internet gateway
-4. Created IAM role with required permissions
-5. Attached IAM role to EC2 instance
-6. Configured Security Group rules
-7. Launched EC2 instance
-8. Created SNS topic and subscriptions
-9. Tested notification delivery
-10. Verified logs in CloudWatch
+1. Created an IAM role with S3 permissions
+2. Launched an EC2 instance
+3. Attached IAM role to EC2
+4. Installed Python and project dependencies
+5. Created an S3 bucket
+6. Deployed the Flask application on EC2
+7. Tested file upload functionality
 
 ---
 
-## 🔐 Security Practices
-- IAM role-based access (no access keys in code)
-- Least privilege IAM policies
+## 🔐 Security Best Practices
+- IAM roles used instead of access keys
+- Least privilege permissions
+- Secure file handling
 - Restricted Security Group rules
-- Isolated VPC networking
 
 ---
 
 ## 📘 What I Learned
-- AWS VPC and subnet design
-- IAM roles and permission management
-- EC2 networking and security configuration
-- Integrating EC2 with AWS SNS
-- Monitoring AWS resources using CloudWatch
-- Real-world AWS infrastructure deployment
+- Deploying Flask applications on AWS EC2
+- Integrating Python applications with Amazon S3
+- Using IAM roles for secure AWS access
+- Basic cloud security best practices
+- Real-world AWS deployment workflow
 
 ---
 
-## 🔮 Future Enhancements
-- Auto Scaling and Load Balancer
-- Dead Letter Queue (DLQ) for failed notifications
-- API Gateway integration
-- CI/CD pipeline using GitHub Actions or AWS CodePipeline
-- Infrastructure as Code (Terraform / CloudFormation)
+## 🔮 Future Improvements
+- Add user authentication
+- File size and type validation
+- Nginx + Gunicorn setup
+- HTTPS using Load Balancer
+- CloudWatch monitoring
 
 ---
 
